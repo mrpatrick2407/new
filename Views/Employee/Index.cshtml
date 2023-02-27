@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Demo_App.Models.Employee>
+
+@{
+    Layout = null;
+}
+<link rel="stylesheet" type="text/css" href="~/css/employee.css" />
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class = "employee-container">
+    <h1> Employee List</h1>
+        <table class="employee-table" ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.Name</td>
+                    <td>@employee.Department</td>
+                    <td>@employee.Email</td>
+                    <td>@employee.PhoneNumber</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = employee.Id })
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+</div>
+
+</html>
